@@ -1,0 +1,9 @@
+# Operating-system metadata and Python caches
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+# Keep datasets, saved models, figures and research logs visible to Git.
