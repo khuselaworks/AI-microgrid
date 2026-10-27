@@ -1,0 +1,47 @@
+GAP FILLING  (penalised B-spline)
+==============================================================
+Source:            /Users/khuselamtolo/Documents/data_preprocessing/Stellies_2023.xlsx
+Series:            GHI (W/m^2)
+Readings:          348,419   (1-minute sampling)
+
+HOLES FOUND
+  Missing on entry:      580  (0.166% of the record)
+  Contiguous runs:       26
+  Filled:                130
+  Left as holes:         450
+
+RUN LENGTHS
+  shortest 1 sample(s)   median 4   longest 261 (261 minutes)
+  Max gap allowed:       24 samples (0h 24m)
+
+LEFT AS HOLES ON PURPOSE
+  A run longer than the max gap has no nearby evidence to fit against.
+  Filling one would invent a stretch of data with nothing behind it, which
+  is worse in a training set than a visible hole.
+
+    2023-05-08 14:32:00 → 2023-05-08 18:52:00   261 samples   run longer than max gap (24 samples)
+    2023-05-08 21:57:00 → 2023-05-08 23:06:00   70 samples   run longer than max gap (24 samples)
+    2023-05-09 01:05:00 → 2023-05-09 01:46:00   42 samples   run longer than max gap (24 samples)
+    2023-05-09 10:44:00 → 2023-05-09 12:00:00   77 samples   run longer than max gap (24 samples)
+
+WHAT WAS PUT IN
+  min    1,400.000 W/m²
+  median 1,400.000 W/m²
+  max    1,400.000 W/m²
+  Clamped to the channel's physical range [0, 1400] — 130 fitted value(s) needed it.
+
+ACCURACY  (measured, not assumed)
+  200 known-good readings were hidden and re-imputed as if they were holes.
+    B-spline MAE   7.345 W/m²   RMSE 33.317
+    Linear   MAE   5.271 W/m²   RMSE 24.950
+    Series std     298.135 W/m²
+  The B-spline is WORSE than linear interpolation on this series.
+  Worth knowing before you rely on it — on a series this smooth, linear interpolation may be the better choice.
+
+NOTES
+  Only readings that were ALREADY missing are touched; nothing is detected or
+  removed here. On solar data the holes are what the filter's valid range screened
+  out as physically impossible.
+  Each hole is filled from a B-spline fitted to the surrounding context only, so a
+  fill reflects local conditions rather than a whole-record average.
+  The file on disk is never modified.

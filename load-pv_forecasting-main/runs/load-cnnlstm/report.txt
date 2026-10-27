@@ -1,0 +1,29 @@
+FORECAST EVALUATION — load, test split
+==============================================================================
+Horizon:   288 steps (24 h at 5-minute resolution)
+Windows:   3,197 rolling origins, every 3 steps
+Period:    2002-08-27 → 2002-09-29
+Units:     kW  (metrics computed after inverting the scaler)
+
+  model                            MAE      RMSE    MAPE     nMAE      R²
+  ----------------------------------------------------------------------
+  cnn_lstm                      40.039    52.649  18.11%    0.167   0.707
+  seasonal naive (1 day)        47.399    67.768  20.42%    0.198   0.515
+  seasonal naive (1 week)       35.821    46.944  15.79%    0.150   0.767
+
+SKILL SCORE  (1 - MAE_model / MAE_baseline; positive means better)
+
+  model                           seasonal naive (1 day)     seasonal naive (1 week)
+  ----------------------------------------------------------------------------------
+  cnn_lstm                                         0.155                      -0.118
+
+ERROR BY LEAD TIME  (MAE, first listed model)
+
+         +0h       +1h       +3h       +6h      +12h      +18h      +24h
+      40.018    40.524    40.919    40.986    39.727    38.608    41.621
+
+TRAINING
+  epochs run:      12
+  best epoch:      4 (val loss 0.051277)
+  early stopped:   yes
+  time:            194 s total, 16.1 s/epoch

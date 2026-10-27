@@ -1,0 +1,70 @@
+Low-Pass Filter Report
+==============================================================
+Series:            Temp (℃)
+Range:             2023-02-01 00:00:00  to  2023-09-30 23:59:00
+Readings:          348,480 at 1-minute sampling
+
+PHYSICAL SCREENING
+--------------------------------------------------------------
+Valid range:       -20 to 60
+Screened:          0 readings (0.000%) set to NaN before filtering
+
+FILTER
+--------------------------------------------------------------
+Type:              Butterworth order 3, zero-phase (filtfilt)
+Cutoff:            15 minutes (1.111 mHz)
+                   Cloud variability sits at 10-60 minute periods; a cutoff
+                   shorter than that reaches very little of it. See the
+                   module header for the measured variance-by-timescale.
+Phase:             zero - forwards and backwards, so nothing is time-shifted
+Still NaN after:   61 readings
+
+WHAT WAS REMOVED
+--------------------------------------------------------------
+Residual (original - filtered) std: 0.09
+Largest single removal:             2.70
+
+SAMPLE-TO-SAMPLE CHANGE
+--------------------------------------------------------------
+This is where the non-Gaussian behaviour actually lives. The level
+distribution is dominated by the daily cycle; the heavy tails are in
+the increments, and they are what the filter targets.
+                  before       after
+std                0.092       0.045
+skew              -0.005       0.290
+kurtosis          20.615      11.054
+
+LEVEL DISTRIBUTION
+--------------------------------------------------------------
+                  before       after
+mean              15.151      15.151
+std                5.430       5.429
+skew               0.664       0.664
+kurtosis           0.341       0.340
+
+CONDITIONAL EFFECT (is the smoothing even-handed?)
+--------------------------------------------------------------
+Local peaks pulled down by:       -0.036
+Local troughs filled up by:        0.023
+Net change in the mean:          -0.0000
+
+A unity-gain filter cannot bias the mean, and does not - but it
+does move value between peaks and troughs, and the two columns
+above are rarely equal. On irradiance that is expected rather
+than wrong: cloud is one-sided (it shades far more than it
+enhances), so there is more trough than peak to redistribute.
+It is also what a real PV array does, since a cloud edge reaches
+part of the array before the rest. Treat it as the plant-
+smoothing approximation working, not as an artefact - but quote
+these numbers rather than hiding them, and use a shorter cutoff
+if point-irradiance fidelity matters more than plant realism.
+
+NOTES
+--------------------------------------------------------------
+- The fast variation removed here is largely real (cloud transients),
+  not measurement error. Filtering is justified when the target is PV
+  plant output, which is spatially smoothed anyway - not as a claim
+  that the raw readings were wrong.
+- filtfilt is non-causal: it uses future samples. Fine for conditioning
+  a historical record, unusable in a real-time pipeline.
+- The original file is never modified.

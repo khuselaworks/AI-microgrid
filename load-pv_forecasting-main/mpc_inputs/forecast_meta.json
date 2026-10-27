@@ -1,0 +1,76 @@
+{
+  "period": [
+    "2002-08-28 00:00:00",
+    "2002-09-29 23:55:00"
+  ],
+  "n_origins": 9504,
+  "horizon_steps": 288,
+  "step_minutes": 5,
+  "tiers": {
+    "perfect": "measured future",
+    "best": {
+      "load": "CNN-LSTM",
+      "solar": "CNN-LSTM (quantile), median"
+    },
+    "reference": {
+      "load": "similar-day average (4 wk)",
+      "solar": "clear-sky persistence (24 h)"
+    }
+  },
+  "checkpoints": {
+    "load": "benchmark/load/models/compare_cnn_lstm.pt",
+    "solar": "benchmark/solar/models/compare_cnn_lstm__quantile.pt"
+  },
+  "sources": {
+    "load": "../data_preprocessing/aggregate_total_load.csv",
+    "solar": "/Users/khuselamtolo/code/load_profile_gui/stellies_mod.csv"
+  },
+  "consistency_with_benchmark": {
+    "load": {
+      "best": {
+        "stored_file": "compare_cnn_lstm.npz",
+        "n_shared_origins": 3197,
+        "max_abs_diff": 0.0,
+        "stored_mae": 27.186471939086914,
+        "rebuilt_mae": 27.186471939086914
+      },
+      "reference": {
+        "stored_file": "compare_similar_day_average__4_wk.npz",
+        "n_shared_origins": 3197,
+        "max_abs_diff": 0.0,
+        "stored_mae": 31.837329864501953,
+        "rebuilt_mae": 31.837329864501953
+      }
+    },
+    "solar": {
+      "best": {
+        "stored_file": "compare_cnn_lstm__quantile.npz",
+        "n_shared_origins": 3197,
+        "max_abs_diff": 0.0,
+        "stored_mae": 155.03953552246094,
+        "rebuilt_mae": 155.03953552246094
+      },
+      "reference": {
+        "stored_file": "compare_clear_sky_persistence__24_h.npz",
+        "n_shared_origins": 3197,
+        "max_abs_diff": 3.0516768106281233e-05,
+        "stored_mae": 183.15939331054688,
+        "rebuilt_mae": 183.15940794032588
+      }
+    }
+  },
+  "missing_origins_filled": {
+    "best": {
+      "load_filled_origins": 0,
+      "solar_filled_origins": 0,
+      "solar_max_age_steps": 0
+    },
+    "reference": {
+      "load_filled_origins": 0,
+      "solar_filled_origins": 0,
+      "solar_max_age_steps": 0
+    }
+  },
+  "pv_chain": "pv_power.pv_ac_power with measured ambient temperature",
+  "torch": "2.14.1"
+}

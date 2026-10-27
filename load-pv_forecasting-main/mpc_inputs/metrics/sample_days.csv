@@ -1,0 +1,4 @@
+kind,date,weekday,daily_clear_sky_index,best_load_kw_mae,best_pv_kw_mae,reference_load_kw_mae,reference_pv_kw_mae
+clearest,2002-08-28,Wednesday,1.109,22.93,18.0,34.18,16.87
+median,2002-09-09,Monday,0.808,26.28,37.16,27.77,48.05
+cloudiest,2002-09-21,Saturday,0.201,30.92,47.17,28.72,130.83

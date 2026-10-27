@@ -1,0 +1,204 @@
+{
+  "made": "2026-10-18 09:40",
+  "quantile": 0.95,
+  "rho": {
+    "value": 0.36684804353870165,
+    "source": "95% quantile of the PV drop per step, PV > 80 kW (23456 steps)",
+    "quantiles": {
+      "0.9": 0.2071713595790375,
+      "0.95": 0.36684804353870165,
+      "0.99": 0.6568520771477296,
+      "0.999": 1.0
+    }
+  },
+  "lambda_up": {
+    "value": 0.23791575408750557,
+    "source": "95% quantile of the load rise per step",
+    "quantiles": {
+      "0.9": 0.17730921937948596,
+      "0.95": 0.23791575408750557,
+      "0.99": 0.3730708262982052,
+      "0.999": 0.552082845227498
+    }
+  },
+  "lambda_down": {
+    "value": 0.1906988888566536,
+    "source": "95% quantile of the load fall per step",
+    "quantiles": {
+      "0.9": 0.14779461928632873,
+      "0.95": 0.1906988888566536,
+      "0.99": 0.2724682102982631,
+      "0.999": 0.3549553203093323
+    }
+  },
+  "tau_eff": {
+    "value": 0.20859525672349036,
+    "source": "largest of 8 stable RMS steps down (range 0.196-0.209 s)"
+  },
+  "tau_eff_over": {
+    "value": 0.20396598686788395,
+    "source": "largest of 5 stable RMS steps up (range 0.188-0.204 s)"
+  },
+  "kappa": {
+    "value": 0.7286581481481481,
+    "source": "largest inverter share in a stable RMS run (R1_OP1_Rule-based); a lower bound"
+  },
+  "rms_runs": [
+    {
+      "case": "G3_OP1_Rule-based",
+      "text": "Loss of the PV plant, Peak demand, Rule-based",
+      "direction": "down",
+      "dp_kw": 187.35039999999998,
+      "e_kws": 345.87,
+      "df_hz": 2.715299999999999,
+      "tau_s": 0.20051001994124376,
+      "rocof_500_measured": 5.2324,
+      "rocof_500_model": 5.430599999999998,
+      "above_51_5_s": null
+    },
+    {
+      "case": "R1_OP1_Rule-based",
+      "text": "25 % of the load is lost, Peak demand, Rule-based",
+      "direction": "up",
+      "dp_kw": 197.0227,
+      "e_kws": 345.87,
+      "df_hz": 2.6833000000000027,
+      "tau_s": 0.1884195011031726,
+      "rocof_500_measured": 5.0741,
+      "rocof_500_model": 5.366600000000005,
+      "above_51_5_s": 0.8419999999999999
+    },
+    {
+      "case": "P1_OP1_Rule-based",
+      "text": "Load pickup of 10 %, Peak demand, Rule-based",
+      "direction": "down",
+      "dp_kw": 77.7858,
+      "e_kws": 345.87,
+      "df_hz": 1.101300000000002,
+      "tau_s": 0.1958746357304293,
+      "rocof_500_measured": 2.1153,
+      "rocof_500_model": 2.202600000000004,
+      "above_51_5_s": null
+    },
+    {
+      "case": "P2_OP1_Rule-based",
+      "text": "Load pickup of 20 %, Peak demand, Rule-based",
+      "direction": "down",
+      "dp_kw": 154.97070000000002,
+      "e_kws": 345.87,
+      "df_hz": 2.206800000000001,
+      "tau_s": 0.1970090903635333,
+      "rocof_500_measured": 4.2592,
+      "rocof_500_model": 4.4136000000000015,
+      "above_51_5_s": null
+    },
+    {
+      "case": "R1_OP2_Rule-based",
+      "text": "25 % of the load is lost, Largest excess PV, Rule-based",
+      "direction": "up",
+      "dp_kw": 28.638800000000003,
+      "e_kws": 345.87,
+      "df_hz": 0.4055000000000035,
+      "tau_s": 0.19588849393131166,
+      "rocof_500_measured": 0.7638,
+      "rocof_500_model": 0.811000000000007,
+      "above_51_5_s": 0.0
+    },
+    {
+      "case": "R2_OP2_Rule-based",
+      "text": "50 % of the load is lost, Largest excess PV, Rule-based",
+      "direction": "up",
+      "dp_kw": 57.338699999999996,
+      "e_kws": 345.87,
+      "df_hz": 0.8072999999999979,
+      "tau_s": 0.19478701191341924,
+      "rocof_500_measured": 1.517,
+      "rocof_500_model": 1.6145999999999958,
+      "above_51_5_s": 0.0
+    },
+    {
+      "case": "P1_OP2_Rule-based",
+      "text": "Load pickup of 10 %, Largest excess PV, Rule-based",
+      "direction": "down",
+      "dp_kw": 11.437799999999996,
+      "e_kws": 345.87,
+      "df_hz": 0.16320000000000334,
+      "tau_s": 0.1974015422546335,
+      "rocof_500_measured": 0.3085,
+      "rocof_500_model": 0.3264000000000067,
+      "above_51_5_s": null
+    },
+    {
+      "case": "P2_OP2_Rule-based",
+      "text": "Load pickup of 20 %, Largest excess PV, Rule-based",
+      "direction": "down",
+      "dp_kw": 22.86529999999999,
+      "e_kws": 345.87,
+      "df_hz": 0.3271000000000015,
+      "tau_s": 0.1979140041897558,
+      "rocof_500_measured": 0.6187,
+      "rocof_500_model": 0.654200000000003,
+      "above_51_5_s": null
+    },
+    {
+      "case": "G2_OP3_Rule-based",
+      "text": "Loss of DG_2, Worst PV week, evening (DG_2 on), Rule-based",
+      "direction": "down",
+      "dp_kw": 199.09380000000002,
+      "e_kws": 345.87,
+      "df_hz": 2.9602000000000004,
+      "tau_s": 0.20570090560328852,
+      "rocof_500_measured": 5.6912,
+      "rocof_500_model": 5.920400000000001,
+      "above_51_5_s": null
+    },
+    {
+      "case": "R1_OP3_Rule-based",
+      "text": "25 % of the load is lost, Worst PV week, evening (DG_2 on), Rule-based",
+      "direction": "up",
+      "dp_kw": 109.2284,
+      "e_kws": 399.12,
+      "df_hz": 1.3954999999999984,
+      "tau_s": 0.20396598686788395,
+      "rocof_500_measured": 2.6898,
+      "rocof_500_model": 2.790999999999997,
+      "above_51_5_s": 0.0
+    },
+    {
+      "case": "R2_OP3_Rule-based",
+      "text": "50 % of the load is lost, Worst PV week, evening (DG_2 on), Rule-based",
+      "direction": "up",
+      "dp_kw": 219.4611,
+      "e_kws": 399.12,
+      "df_hz": 2.7612000000000023,
+      "tau_s": 0.20086478086549295,
+      "rocof_500_measured": 5.2844,
+      "rocof_500_model": 5.522400000000004,
+      "above_51_5_s": 0.861
+    },
+    {
+      "case": "P1_OP3_Rule-based",
+      "text": "Load pickup of 10 %, Worst PV week, evening (DG_2 on), Rule-based",
+      "direction": "down",
+      "dp_kw": 43.39180000000002,
+      "e_kws": 399.12,
+      "df_hz": 0.5645000000000024,
+      "tau_s": 0.2076919971054447,
+      "rocof_500_measured": 1.0988,
+      "rocof_500_model": 1.1290000000000049,
+      "above_51_5_s": null
+    },
+    {
+      "case": "P2_OP3_Rule-based",
+      "text": "Load pickup of 20 %, Worst PV week, evening (DG_2 on), Rule-based",
+      "direction": "down",
+      "dp_kw": 86.60679999999999,
+      "e_kws": 399.12,
+      "df_hz": 1.1315999999999988,
+      "tau_s": 0.20859525672349036,
+      "rocof_500_measured": 2.2087,
+      "rocof_500_model": 2.2631999999999977,
+      "above_51_5_s": null
+    }
+  ]
+}

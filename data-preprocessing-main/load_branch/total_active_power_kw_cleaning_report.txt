@@ -1,0 +1,70 @@
+Data Cleaning Report
+==============================================================
+Source:            /Users/khuselamtolo/Documents/data_preprocessing/Westridge_2002.xlsx
+Series:            total_active_power_kw
+Range:             2002-02-01 00:00:00  to  2002-09-30 23:55:00
+Readings:          69,696 at 5-minute resolution
+
+DETECTION
+--------------------------------------------------------------
+Method:            zscore
+Window:            48 samples (4.00 h, centred)
+Threshold:         3 sigma
+Flagged:           23 readings (0.033% of the series)
+Flagged regions:   23  (longest run 1 readings)
+
+IMPUTATION
+--------------------------------------------------------------
+Method:            penalised B-spline, lambda=1 x gap length, context max(12, 4 x gap) samples either side
+Max gap filled:    24 samples (2.0 h)
+Imputed:           23 readings
+Left missing:      0 readings
+
+IMPUTATION ACCURACY (hold-out test on this series)
+--------------------------------------------------------------
+200 readings that were NOT flagged were hidden, imputed, and
+compared against their true values:
+  B-spline            MAE    18.03 kW    RMSE    23.08 kW
+  linear interpolation MAE    19.12 kW    RMSE    24.22 kW
+  series std for scale       102.06 kW
+
+EFFECT ON THE SERIES
+--------------------------------------------------------------
+                        before       after      change
+mean                   244.453     244.439      -0.014
+std                    102.063     102.043      -0.020
+min                     65.160      65.160       0.000
+max                    792.010     792.010       0.000
+skew                     0.602       0.602      -0.000
+excess kurtosis         -0.014      -0.013       0.001
+
+Total energy:      1,419,783.6 kWh  ->  1,419,704.6 kWh (-0.0056%)
+
+LARGEST CORRECTIONS
+--------------------------------------------------------------
+timestamp                 original     imputed      change
+2002-04-24 10:15:00         389.61      255.28     -134.33
+2002-06-08 11:00:00         510.66      401.84     -108.82
+2002-04-09 11:55:00         392.21      283.98     -108.23
+2002-03-27 19:15:00         482.60      380.33     -102.27
+2002-09-22 10:05:00         485.43      395.17      -90.26
+2002-04-08 11:15:00         131.63      220.04      +88.41
+2002-05-09 14:05:00         166.65      252.13      +85.48
+2002-07-05 12:30:00         428.25      344.32      -83.93
+2002-05-31 13:50:00         385.51      302.98      -82.53
+2002-07-22 03:15:00         186.17      104.58      -81.60
+2002-05-16 10:05:00         349.16      267.81      -81.35
+2002-07-29 12:20:00         330.33      250.37      -79.95
+2002-04-24 12:30:00         146.03      225.28      +79.24
+2002-09-07 09:45:00         416.19      339.05      -77.15
+2002-04-30 14:25:00         155.57      230.25      +74.69
+... and 8 more
+
+NOTES
+--------------------------------------------------------------
+- Flagged readings are review candidates, not confirmed faults. A
+  detector cannot tell a metering error from a real demand spike;
+  it only measures how unusual a reading is against its neighbours.
+- Imputed values are model output, not measurements. Anything
+  computed from this series afterwards inherits that.
+- The original file is never modified.

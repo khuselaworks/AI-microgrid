@@ -1,0 +1,16 @@
+{
+  "winner": "F  E+lag_1d",
+  "features": [
+    "tod",
+    "dow",
+    "holiday",
+    "lag_1w",
+    "lag_1d"
+  ],
+  "mean_val_mae": {
+    "D  tod+dow+holiday": 32.034841537475586,
+    "E  D+lag_1w": 31.4517084757487,
+    "F  E+lag_1d": 30.703895568847656
+  },
+  "rule": "lowest mean validation MAE across folds; test not consulted"
+}

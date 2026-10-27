@@ -1,0 +1,32 @@
+FORECAST EVALUATION — solar, test split
+==============================================================================
+Horizon:   288 steps (24 h at 5-minute resolution)
+Windows:   3,197 rolling origins, every 3 steps
+Period:    2002-08-27 → 2002-09-29
+Units:     W/m²  (metrics computed after inverting the scaler)
+Mask:      DAYLIGHT ONLY — 47.8% of horizon steps scored. Night GHI is exactly zero and every model gets it right; including it would roughly halve every error shown below.
+
+  model                            MAE      RMSE    MAPE     nMAE      R²
+  ----------------------------------------------------------------------
+  cnn_lstm                     165.952   233.538 119.59%    0.447   0.332
+  seasonal naive (1 day)       206.098   292.372 136.72%    0.555  -0.048
+  seasonal naive (1 week)      246.447   327.726 142.48%    0.663  -0.316
+  clear-sky persistence        196.390   280.375 169.21%    0.529   0.037
+
+SKILL SCORE  (1 - MAE_model / MAE_baseline; positive means better)
+
+  model                            clear-sky persistence      seasonal naive (1 day)     seasonal naive (1 week)
+  --------------------------------------------------------------------------------------------------------------
+  cnn_lstm                                         0.155                       0.195                       0.327
+
+ERROR BY LEAD TIME  (MAE, first listed model)
+
+         +0h       +1h       +3h       +6h      +12h      +18h      +24h
+      96.829   119.014   142.398   163.116   176.598   176.367   183.242
+
+TRAINING
+  epochs run:      16
+  best epoch:      8 (val loss 0.032085)
+  early stopped:   yes
+  device:          mps
+  time:            118 s total, 7.4 s/epoch

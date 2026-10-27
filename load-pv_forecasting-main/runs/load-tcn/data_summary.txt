@@ -1,0 +1,20 @@
+Target:        load  (timestamp)
+Source:        /tmp/agg8.csv
+Grid:          5-minute, 69,696 steps, 2002-02-01 → 2002-09-30
+Missing:       0 readings
+Screened:      none outside the physical range
+
+SPLITS  (chronological; no window crosses a boundary)
+  train  2002-02-01 → 2002-07-20  (48,787 steps)
+  val    2002-07-20 → 2002-08-25  (10,454 steps)
+  test   2002-08-25 → 2002-09-30  (10,455 steps)
+
+WINDOWS
+  lookback 576 + gap 0 + horizon 288 = 864 steps per window, origins every 6
+  residual: off — the model predicts the level directly
+  train  7,988 windows
+  val    1,599 windows
+  test   1,599 windows
+
+SCALING  (fitted on the training split only)
+  min 67.055   max 792.010   → [0, 1]

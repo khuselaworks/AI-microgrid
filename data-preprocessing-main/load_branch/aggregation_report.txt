@@ -1,0 +1,27 @@
+Report generated for: Westridge_2002.xlsx
+Steps run: Aggregated
+
+
+AGGREGATION
+========================================
+Channels summed:     65
+Output column:       total_active_power_kw
+Readings:            69,696
+Unknown totals:      0
+
+TOTAL DEMAND
+  mean    244.45 kW
+  median  236.56 kW
+  min     65.16 kW
+  max     792.01 kW
+  std     102.06 kW
+  skew    0.602
+  excess kurtosis -0.014
+  total energy over the record: 1,419,784 kWh
+
+AGGREGATION PULLS THE DISTRIBUTION TOWARD SYMMETRY
+  individual channels: skew 1.13 to 4.14
+  aggregate:           skew 0.60
+
+NOTES
+  The result is a single aggregate series (csv).

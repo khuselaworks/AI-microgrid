@@ -1,0 +1,20 @@
+Target:        solar  (TmStamp)
+Source:        /tmp/stellies.xlsx
+Grid:          5-minute, 69,696 steps, 2023-02-01 → 2023-09-30
+Missing:       269 readings
+Screened:      713 readings outside (0.0, 1400.0) — physically impossible, removed before scaling
+
+SPLITS  (chronological; no window crosses a boundary)
+  train  2023-02-01 → 2023-07-20  (48,787 steps)
+  val    2023-07-20 → 2023-08-25  (10,454 steps)
+  test   2023-08-25 → 2023-09-30  (10,455 steps)
+
+WINDOWS
+  lookback 576 + gap 0 + horizon 288 = 864 steps per window, origins every 3
+  residual: off — the model predicts the level directly
+  train  15,311 windows   (664 rejected for missing data)
+  val    3,197 windows
+  test   3,197 windows
+
+SCALING  (fitted on the training split only)
+  min 0.000   max 1,351.278   → [0, 1]

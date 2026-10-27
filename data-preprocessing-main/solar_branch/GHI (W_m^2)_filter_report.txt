@@ -1,0 +1,74 @@
+Low-Pass Filter Report
+==============================================================
+Series:            GHI (W/m^2)
+Range:             2023-02-01 00:00:00  to  2023-09-30 23:59:00
+Readings:          348,480 at 1-minute sampling
+
+PHYSICAL SCREENING
+--------------------------------------------------------------
+Valid range:       0 to 1400
+Screened:          713 readings (0.205%) set to NaN before filtering
+  worst value:     2,978.8
+  affected dates:  2023-02-05, 2023-05-08, 2023-05-09
+
+FILTER
+--------------------------------------------------------------
+Type:              Butterworth order 3, zero-phase (filtfilt)
+Cutoff:            30 minutes (0.556 mHz)
+                   Cloud variability sits at 10-60 minute periods; a cutoff
+                   shorter than that reaches very little of it. See the
+                   module header for the measured variance-by-timescale.
+Phase:             zero - forwards and backwards, so nothing is time-shifted
+Still NaN after:   1,224 readings
+
+WHAT WAS REMOVED
+--------------------------------------------------------------
+Residual (original - filtered) std: 38.06
+Largest single removal:             668.27
+
+SAMPLE-TO-SAMPLE CHANGE
+--------------------------------------------------------------
+This is where the non-Gaussian behaviour actually lives. The level
+distribution is dominated by the daily cycle; the heavy tails are in
+the increments, and they are what the filter targets.
+                  before       after
+std               35.515       4.513
+skew              -0.050       0.027
+kurtosis          91.573      26.130
+
+LEVEL DISTRIBUTION
+--------------------------------------------------------------
+                  before       after
+mean             171.226     171.231
+std              275.112     271.893
+skew               1.645       1.602
+kurtosis           1.734       1.586
+
+CONDITIONAL EFFECT (is the smoothing even-handed?)
+--------------------------------------------------------------
+Local peaks pulled down by:      -24.466
+Local troughs filled up by:       11.531
+Net change in the mean:           0.0069
+
+A unity-gain filter cannot bias the mean, and does not - but it
+does move value between peaks and troughs, and the two columns
+above are rarely equal. On irradiance that is expected rather
+than wrong: cloud is one-sided (it shades far more than it
+enhances), so there is more trough than peak to redistribute.
+It is also what a real PV array does, since a cloud edge reaches
+part of the array before the rest. Treat it as the plant-
+smoothing approximation working, not as an artefact - but quote
+these numbers rather than hiding them, and use a shorter cutoff
+if point-irradiance fidelity matters more than plant realism.
+
+NOTES
+--------------------------------------------------------------
+- The index was not uniform; 61 missing timestamp(s) were inserted as NaN to give the filter a fixed sample rate.
+- 713 screened reading(s) are NaN in the output. They are a sensor fault, not weather - decide explicitly what the downstream model does with them rather than letting them through.
+- The fast variation removed here is largely real (cloud transients),
+  not measurement error. Filtering is justified when the target is PV
+  plant output, which is spatially smoothed anyway - not as a claim
+  that the raw readings were wrong.
+- filtfilt is non-causal: it uses future samples. Fine for conditioning
+  a historical record, unusable in a real-time pipeline.
+- The original file is never modified.

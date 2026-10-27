@@ -1,0 +1,58 @@
+
+STAGE 1 - feature selection (load), seed 0, 3 folds
+  select  D  tod+dow+holiday     fold 0 seed 0  val MAE   32.928  test MAE   43.046  [22 ep, 166s]
+  select  E  D+lag_1w            fold 0 seed 0  val MAE   30.793  test MAE   35.342  [17 ep, 103s]
+  select  F  E+lag_1d            fold 0 seed 0  val MAE   30.085  test MAE   35.410  [16 ep, 96s]
+  select  D  tod+dow+holiday     fold 1 seed 0  val MAE   32.953  test MAE   31.113  [13 ep, 117s]
+  select  E  D+lag_1w            fold 1 seed 0  val MAE   33.034  test MAE   32.092  [16 ep, 134s]
+  select  F  E+lag_1d            fold 1 seed 0  val MAE   32.015  test MAE   30.277  [13 ep, 109s]
+  select  D  tod+dow+holiday     fold 2 seed 0  val MAE   30.224  test MAE   29.187  [16 ep, 213s]
+  select  E  D+lag_1w            fold 2 seed 0  val MAE   30.528  test MAE   27.366  [25 ep, 286s]
+  select  F  E+lag_1d            fold 2 seed 0  val MAE   30.012  test MAE   27.186  [17 ep, 183s]
+  -> selected F  E+lag_1d  ('tod', 'dow', 'holiday', 'lag_1w', 'lag_1d')
+
+STAGE 2 - comparison (load), features ('tod', 'dow', 'holiday', 'lag_1w', 'lag_1d')
+  compare seasonal naive (1 day)         fold 0            val MAE   48.398  test MAE   51.556
+  compare seasonal naive (1 week)        fold 0            val MAE   37.114  test MAE   39.932
+  compare similar-day average (4 wk)     fold 0            val MAE   31.438  test MAE   32.364
+  compare linear regression              fold 0            val MAE   33.735  test MAE   36.560
+  compare reference interval             fold 0   wraps similar-day average (4 wk); 80% PICP 0.734
+  compare seasonal naive (1 day)         fold 1            val MAE   51.552  test MAE   48.212
+  compare seasonal naive (1 week)        fold 1            val MAE   39.931  test MAE   43.021
+  compare similar-day average (4 wk)     fold 1            val MAE   32.364  test MAE   34.482
+  compare linear regression              fold 1            val MAE   36.714  test MAE   38.188
+  compare reference interval             fold 1   wraps similar-day average (4 wk); 80% PICP 0.736
+  compare seasonal naive (1 day)         fold 2            val MAE   48.208  test MAE   47.399
+  compare seasonal naive (1 week)        fold 2            val MAE   43.021  test MAE   35.821
+  compare similar-day average (4 wk)     fold 2            val MAE   34.484  test MAE   31.837
+  compare linear regression              fold 2            val MAE   38.115  test MAE   32.811
+  compare reference interval             fold 2   wraps similar-day average (4 wk); 80% PICP 0.832
+  compare CNN-LSTM               fold 0 seed 0  val MAE   30.085  test MAE   35.410  [16 ep, 217s]
+  compare CNN-LSTM (quantile)    fold 0 seed 0  val MAE   30.121  test MAE   35.703  [26 ep, 283s]
+  compare TCN                    fold 0 seed 0  val MAE   28.840  test MAE   33.632  [16 ep, 389s]
+  compare CNN-LSTM               fold 1 seed 0  val MAE   32.015  test MAE   30.277  [13 ep, 265s]
+  compare CNN-LSTM (quantile)    fold 1 seed 0  val MAE   32.426  test MAE   30.700  [21 ep, 407s]
+  compare TCN                    fold 1 seed 0  val MAE   32.131  test MAE   31.307  [17 ep, 604s]
+  compare CNN-LSTM               fold 2 seed 0  val MAE   30.012  test MAE   27.186  [17 ep, 313s]
+  compare CNN-LSTM (quantile)    fold 2 seed 0  val MAE   30.115  test MAE   27.769  [23 ep, 1033s]
+  compare TCN                    fold 2 seed 0  val MAE   30.689  test MAE   28.314  [16 ep, 4846s]
+  compare CNN-LSTM               fold 0 seed 1  val MAE   29.723  test MAE   34.579  [16 ep, 110s]
+  compare CNN-LSTM (quantile)    fold 0 seed 1  val MAE   29.682  test MAE   33.113  [20 ep, 147s]
+  compare TCN                    fold 0 seed 1  val MAE   29.298  test MAE   32.767  [18 ep, 1443s]
+  compare CNN-LSTM               fold 1 seed 1  val MAE   31.930  test MAE   30.419  [16 ep, 1159s]
+  compare CNN-LSTM (quantile)    fold 1 seed 1  val MAE   31.775  test MAE   30.683  [16 ep, 3011s]
+  compare TCN                    fold 1 seed 1  val MAE   31.702  test MAE   30.427  [16 ep, 6912s]
+  compare CNN-LSTM               fold 2 seed 1  val MAE   29.878  test MAE   26.841  [17 ep, 2063s]
+  compare CNN-LSTM (quantile)    fold 2 seed 1  val MAE   29.864  test MAE   27.734  [27 ep, 1282s]
+  compare TCN                    fold 2 seed 1  val MAE   30.340  test MAE   27.839  [14 ep, 6098s]
+  compare CNN-LSTM               fold 0 seed 2  val MAE   30.628  test MAE   35.329  [16 ep, 2053s]
+  compare CNN-LSTM (quantile)    fold 0 seed 2  val MAE   30.213  test MAE   34.628  [19 ep, 2198s]
+  compare TCN                    fold 0 seed 2  val MAE   29.773  test MAE   33.954  [15 ep, 3765s]
+  compare CNN-LSTM               fold 1 seed 2  val MAE   31.915  test MAE   30.441  [14 ep, 3047s]
+  compare CNN-LSTM (quantile)    fold 1 seed 2  val MAE   31.636  test MAE   30.903  [15 ep, 7650s]
+  compare TCN                    fold 1 seed 2  val MAE   32.121  test MAE   31.178  [13 ep, 345s]
+  compare CNN-LSTM               fold 2 seed 2  val MAE   30.092  test MAE   27.992  [21 ep, 389s]
+  compare CNN-LSTM (quantile)    fold 2 seed 2  val MAE   30.028  test MAE   27.759  [21 ep, 388s]
+  compare TCN                    fold 2 seed 2  val MAE   30.235  test MAE   28.284  [17 ep, 590s]
+
+-> benchmark/load/results.jsonl  (51 units)

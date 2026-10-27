@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "method": "min-max",
+  "formula": "x_scaled = (x - data_min) / (data_max - data_min) * (feature_max - feature_min) + feature_min",
+  "inverse": "x = (x_scaled - feature_min) / (feature_max - feature_min) * (data_max - data_min) + data_min",
+  "feature_range": [
+    0.0,
+    1.0
+  ],
+  "fit_fraction": 0.7,
+  "fit_start": "2002-02-01 00:00:00",
+  "fit_end": "2002-07-20 09:30:00",
+  "n_rows_total": 69696,
+  "n_rows_fit": 48787,
+  "source": "/Users/khuselamtolo/Documents/data_preprocessing/Westridge_2002.xlsx",
+  "layer": "Cleaned",
+  "fitted_at": "2026-10-18T15:01:15",
+  "channels": {
+    "total_active_power_kw": {
+      "name": "total_active_power_kw",
+      "data_min": 67.05499999999982,
+      "data_max": 792.0099999999989,
+      "feature_min": 0.0,
+      "feature_max": 1.0,
+      "n_fit": 48787,
+      "n_missing_fit": 0,
+      "is_constant": false,
+      "unit": "kW"
+    }
+  }
+}

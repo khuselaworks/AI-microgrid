@@ -1,0 +1,40 @@
+MIN-MAX NORMALISATION
+==============================================
+Source:          /Users/khuselamtolo/Documents/data_preprocessing/Westridge_2002.xlsx
+Layer:           Cleaned
+Target range:    [0, 1]
+Channels:        1
+
+FIT WINDOW  (no test-period information is used)
+  Fit fraction:  70% of the record
+  Fitted on:     rows 1–48,787 of 69,696
+  Fit period:    2002-02-01 00:00:00 → 2002-07-20 09:30:00
+  Held out:      20,909 row(s) transformed with those same parameters
+
+FITTED PARAMETERS PER CHANNEL
+
+  channel                               min            max          range
+  -----------------------------------------------------------------------
+  total_active_power_kw             67.0550       792.0100       724.9550
+
+HELD-OUT VALUES OUTSIDE THE TARGET RANGE
+  Expected, and not an error. A later peak that exceeds the training maximum
+  scales above the top of the range; that is the honest signal that the fit
+  window did not contain the series' full range. Nothing has been clipped.
+
+  channel                     n outside  % of held-out      worst
+  --------------------------------------------------------------
+  total_active_power_kw               4          0.02%     0.0026
+
+REVERSIBILITY
+  Round-trip check (normalise then invert): largest error 2.289e-16
+  The scaling is exactly invertible, so a forecast made on normalised data can
+  be mapped back to real units with inverse_transform() and the saved parameters.
+
+NOTES
+  Save writes the fitted parameters as JSON alongside the report. Use that file
+  — not a refit — to transform any future data and to invert model output, or the
+  scaling will not match what the model was trained on.
+  The bounds come from this layer. Normalise a CLEANED layer: on raw data a single
+  surviving spike sets the maximum and squashes everything else into a narrow band.
+  The file on disk is never modified.

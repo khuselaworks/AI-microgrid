@@ -1,0 +1,32 @@
+{
+  "model": "CNN-LSTM (point), final benchmark recipe",
+  "target": "load",
+  "fold": "F3",
+  "features": [
+    "tod",
+    "dow",
+    "holiday",
+    "lag_1w",
+    "lag_1d"
+  ],
+  "epochs_timed": 2,
+  "torch": "2.14.1",
+  "python": "3.12.11",
+  "machine": "arm64",
+  "mps": {
+    "epoch_seconds": [
+      11.055019855499268,
+      10.552950143814087
+    ],
+    "sec_per_epoch": 10.803984999656677,
+    "train_windows": 15303
+  },
+  "cpu": {
+    "epoch_seconds": [
+      37.54709601402283,
+      33.305821895599365
+    ],
+    "sec_per_epoch": 35.426458954811096,
+    "train_windows": 15303
+  }
+}

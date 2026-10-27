@@ -1,0 +1,50 @@
+{
+  "target": "solar",
+  "source": "../stellies_mod.csv",
+  "column": null,
+  "resample": "5min",
+  "valid_range": [
+    0.0,
+    1400.0
+  ],
+  "horizon": 288,
+  "lookback": 576,
+  "gap": 0,
+  "stride": 3,
+  "train_frac": 0.7,
+  "val_frac": 0.15,
+  "model": "cnn_lstm",
+  "residual": "none",
+  "use_doy": false,
+  "future_features": [
+    "tod",
+    "lag_1d"
+  ],
+  "encoder_calendar": true,
+  "conv_channels": [
+    32,
+    32
+  ],
+  "kernel_size": 5,
+  "hidden": 128,
+  "decoder_hidden": 64,
+  "dropout": 0.0,
+  "quantiles": [
+    0.5
+  ],
+  "epochs": 30,
+  "batch_size": 64,
+  "lr": 0.001,
+  "weight_decay": 1e-05,
+  "patience": 8,
+  "grad_clip": 1.0,
+  "seed": 0,
+  "num_workers": 0,
+  "max_train_windows": null,
+  "device": "mps",
+  "daytime_only": true,
+  "daytime_threshold": 20.0,
+  "mape_floor": 1.0,
+  "run_name": "solar-final",
+  "out_dir": "runs"
+}

@@ -1,0 +1,37 @@
+GAP FILLING  (penalised B-spline)
+==============================================================
+Source:            /Users/khuselamtolo/Documents/data_preprocessing/Stellies_2023.xlsx
+Series:            Temp (℃)
+Readings:          348,419   (1-minute sampling)
+
+HOLES FOUND
+  Missing on entry:      242  (0.069% of the record)
+  Contiguous runs:       242
+  Filled:                242
+  Left as holes:         0
+
+RUN LENGTHS
+  shortest 1 sample(s)   median 1   longest 1 (1 minutes)
+  Max gap allowed:       24 samples (0h 24m)
+
+WHAT WAS PUT IN
+  min    4.760 °C
+  median 12.378 °C
+  max    24.984 °C
+  Clamped to the channel's physical range [-20, 60] — no fitted value needed it.
+
+ACCURACY  (measured, not assumed)
+  200 known-good readings were hidden and re-imputed as if they were holes.
+    B-spline MAE   0.032 °C   RMSE 0.047
+    Linear   MAE   0.022 °C   RMSE 0.033
+    Series std     5.430 °C
+  The B-spline is WORSE than linear interpolation on this series.
+  Worth knowing before you rely on it — on a series this smooth, linear interpolation may be the better choice.
+
+NOTES
+  Only readings that were ALREADY missing are touched; nothing is detected or
+  removed here. On solar data the holes are what the filter's valid range screened
+  out as physically impossible.
+  Each hole is filled from a B-spline fitted to the surrounding context only, so a
+  fill reflects local conditions rather than a whole-record average.
+  The file on disk is never modified.

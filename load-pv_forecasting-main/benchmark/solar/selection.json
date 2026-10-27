@@ -1,0 +1,15 @@
+{
+  "winner": "S4  tod+lag_1d+lag_1w",
+  "features": [
+    "tod",
+    "lag_1d",
+    "lag_1w"
+  ],
+  "mean_val_mae": {
+    "S1  tod": 112.11878458658855,
+    "S2  tod+lag_1d": 106.46256256103516,
+    "S3  tod+lag_1w": 108.37666575113933,
+    "S4  tod+lag_1d+lag_1w": 103.1476338704427
+  },
+  "rule": "lowest mean validation MAE across folds; test not consulted"
+}

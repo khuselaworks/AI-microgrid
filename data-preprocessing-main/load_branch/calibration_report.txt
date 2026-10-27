@@ -1,0 +1,20 @@
+Calibration - zscore on total_active_power_kw
+====================================================
+Injected 120 faults (spike, dip, dropout) x 5 repeats
+
+Best: window = 48 samples, threshold = 3 sigma
+      F1 = 0.716   precision = 0.827   recall = 0.632
+      flags 23 points in the clean series at these settings
+
+Recall by fault size (how big does a fault have to be to get caught?):
+     3σ :  26.2%
+     5σ :  69.9%
+     8σ :  88.9%
+    12σ :  90.1%
+  dropout :  65.7%
+
+Notes:
+  - 11 of 42 grid cells are mathematically unreachable for a Z-score (sigma >= (w-1)/sqrt(w)) and were excluded from the search.
+  - Detection of the first 83% at run length 1, 67% at run length 2, 47% at run length 3. Consecutive bad readings sit inside each other's window and inflate the local spread.
+
+The red box is the recommended cell, now loaded into the Window and Threshold boxes. 'n/a' cells are thresholds a Z-score cannot reach at that window size.

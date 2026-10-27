@@ -1,0 +1,31 @@
+FORECAST EVALUATION — solar, test split
+==============================================================================
+Horizon:   288 steps (24 h at 5-minute resolution)
+Windows:   3,197 rolling origins, every 3 steps
+Period:    2023-08-27 → 2023-09-29
+Units:     W/m²  (metrics computed after inverting the scaler)
+Mask:      DAYLIGHT ONLY — 47.8% of horizon steps scored. Night GHI is exactly zero and every model gets it right; including it would roughly halve every error shown below.
+
+  model                            MAE      RMSE    MAPE     nMAE      R²
+  ----------------------------------------------------------------------
+  cnn_lstm                     170.527   231.679 127.76%    0.459   0.342
+  seasonal naive (1 day)       206.098   292.372 136.72%    0.555  -0.048
+  seasonal naive (1 week)      246.447   327.726 142.48%    0.663  -0.316
+  clear-sky persistence        196.390   280.375 169.21%    0.529   0.037
+
+SKILL SCORE  (1 - MAE_model / MAE_baseline; positive means better)
+
+  model                            clear-sky persistence      seasonal naive (1 day)     seasonal naive (1 week)
+  --------------------------------------------------------------------------------------------------------------
+  cnn_lstm                                         0.132                       0.173                       0.308
+
+ERROR BY LEAD TIME  (MAE, first listed model)
+
+         +0h       +1h       +3h       +6h      +12h      +18h      +24h
+     163.580   165.883   167.212   168.540   172.430   173.766   173.914
+
+TRAINING
+  epochs run:      11
+  best epoch:      3 (val loss 0.040438)
+  early stopped:   yes
+  time:            165 s total, 15.0 s/epoch
